@@ -65,14 +65,15 @@ run_analysis <- function() {
         ## create summary - avg of each var by activity 
         act_avg <- seldata %>% group_by(activity) %>% summarize_all( mean ) %>% 
                 select( -subject ) 
-        names(act_avg)[1] <- "Averaged By"
+        names(act_avg)[1] <- "AveragedBy"
    
         ## create summary - avg of each var by subject
         sub_avg <- seldata %>% group_by(subject) %>% summarize_all( mean ) %>% 
                 select( -activity ) 
-        names(sub_avg)[1] <- "Averaged By"
+        names(sub_avg)[1] <- "AveragedBy"
         average_summary <- rbind(act_avg, sub_avg)
 
         ## save tidy dataset
-        write.csv(average_summary, "./UCI_summary_dataset.csv", row.names = FALSE)
+        write.table(average_summary, "./UCI_summary_dataset.txt", row.names = FALSE)
+       
 }
