@@ -10,6 +10,6 @@ This repo contains:
 
 
 To review the dataset issue the following command in RStudio: 
-
+	read.csv("UCI_summary_dataset.csv")
 	
 

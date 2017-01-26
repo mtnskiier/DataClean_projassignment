@@ -7,8 +7,7 @@ run_analysis <- function() {
         ##      Datasets are available in the "./data" directory relative to the R script
         ##
         ## OUTPUTS: 
-        ##      Tidy data set of a merged training and test data sets
-        ##      A secondary summary tidy data set containing the averages for each valiable, by 
+        ##      A summary tidy data set containing the averages for each variable, by 
         ##      activity and subject.
         ##
         
@@ -63,9 +62,6 @@ run_analysis <- function() {
                                             "sitting", "standing", "laying"), 
                                 ordered = TRUE)
 
-        head(seldata)
-        str(seldata)
-        
         ## create summary - avg of each var by activity 
         act_avg <- seldata %>% group_by(activity) %>% summarize_all( mean ) %>% 
                 select( -subject ) 
@@ -79,6 +75,4 @@ run_analysis <- function() {
 
         ## save tidy dataset
         write.csv(average_summary, "./UCI_summary_dataset.csv", row.names = FALSE)
-        
-       
 }
